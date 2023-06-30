@@ -1,0 +1,154 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\hypertarget{assignment-american-community-survey-exercise}{%
+\section{Assignment: American Community Survey
+Exercise}\label{assignment-american-community-survey-exercise}}
+
+\hypertarget{name-quintero-vasquez-johnatan}{%
+\section{Name: Quintero Vasquez,
+Johnatan}\label{name-quintero-vasquez-johnatan}}
+
+\hypertarget{date-2023-06-25}{%
+\section{Date: 2023-06-25}\label{date-2023-06-25}}
+
+\hypertarget{load-the-ggplot2-package}{%
+\subsection{Load the ggplot2 package}\label{load-the-ggplot2-package}}
+
+library(ggplot2) theme\_set(theme\_minimal())
+
+\hypertarget{set-the-working-directory-to-the-root-of-your-dsc-520-directory}{%
+\subsection{Set the working directory to the root of your DSC 520
+directory}\label{set-the-working-directory-to-the-root-of-your-dsc-520-directory}}
+
+setwd(``C:/Users/21428899/OneDrive - Bellevue
+University/Documents/GitHub/dsc520'')
+
+\hypertarget{load-the-dataacs-14-1yr-s0201.csv-to}{%
+\subsection{\texorpdfstring{Load the \texttt{data/acs-14-1yr-s0201.csv}
+to}{Load the data/acs-14-1yr-s0201.csv to}}\label{load-the-dataacs-14-1yr-s0201.csv-to}}
+
+survey\_df \textless- read.csv(``data/acs-14-1yr-s0201.csv'')
+
+\hypertarget{what-are-the-elements-in-your-data-including-the-categories-and-data-types}{%
+\section{1. What are the elements in your data (including the categories
+and data
+types)?}\label{what-are-the-elements-in-your-data-including-the-categories-and-data-types}}
+
+\hypertarget{please-provide-the-output-from-the-following-functions-str-nrow-ncol}{%
+\section{2. Please provide the output from the following functions:
+str(); nrow();
+ncol()}\label{please-provide-the-output-from-the-following-functions-str-nrow-ncol}}
+
+str(survey\_df) nrow(survey\_df) ncol(survey\_df)
+
+\hypertarget{create-a-histogram-of-the-hsdegree-variable-using-the-ggplot2-package.}{%
+\section{3. Create a Histogram of the HSDegree variable using the
+ggplot2
+package.}\label{create-a-histogram-of-the-hsdegree-variable-using-the-ggplot2-package.}}
+
+\hypertarget{set-a-bin-size-for-the-histogram.}{%
+\subsection{1. Set a bin size for the
+Histogram.}\label{set-a-bin-size-for-the-histogram.}}
+
+\hypertarget{include-a-title-and-appropriate-xy-axis-labels-on-your-histogram-plot.}{%
+\subsection{2. Include a Title and appropriate X/Y axis labels on your
+Histogram
+Plot.}\label{include-a-title-and-appropriate-xy-axis-labels-on-your-histogram-plot.}}
+
+ggplot(survey\_df, aes(x = HSDegree)) + geom\_histogram(bins = 10) +
+ggtitle(``High School Degree'') + xlab(``HS Degree'') + ylab(``GPA'')
+
+\#4. Answer the following questions based on the Histogram produced:
+\#\# 1. Based on what you see in this histogram, is the data
+distribution unimodal? \#\# 2. Is it approximately symmetrical? \#\# 3.
+Is it approximately bell-shaped? \#\# 4. Is it approximately normal?
+\#\# 5. If not normal, is the distribution skewed? If so, in which
+direction? \#\# 6. Include a normal curve to the Histogram that you
+plotted. \#\# 7. Explain whether a normal distribution can accurately be
+used as a model for this data.
+
+\#5. Create a Probability Plot of the HSDegree variable.
+
+\#6. Answer the following questions based on the Probability Plot: \# 1.
+Based on what you see in this probability plot, is the distribution
+approximately normal? Explain how you know. \# 2. If not normal, is the
+distribution skewed? If so, in which direction? Explain how you know.
+
+\#7. Now that you have looked at this data visually for normality, you
+will now quantify normality with numbers using the stat.desc() function.
+Include a screen capture of the results produced.
+
+\#8. In several sentences provide an explanation of the result produced
+for skew, kurtosis, and z-scores. In addition, explain how a change in
+the sample size may change your explanation?
+
+\end{document}
