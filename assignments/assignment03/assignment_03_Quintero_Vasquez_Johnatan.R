@@ -9,7 +9,7 @@ theme_set(theme_minimal())
 getwd()
 
 ## Set the working directory to the root of your DSC 520 directory
-setwd("C:/Users/21428899/OneDrive - Bellevue University/Documents/GitHub/dsc520")
+setwd("C:/Users/21428899/OneDrive-Bellevue University/Documents/GitHub/dsc520")
 
 ## Load the `data/r4ds/heights.csv` to
 heights_df <- read.csv("data/r4ds/heights.csv")
@@ -57,5 +57,6 @@ ggplot(heights_df, aes(x = earn)) + geom_histogram(bins = 10)
 ggplot(heights_df, aes(x = earn)) + geom_density()
 
 
-### knitr::stitch("C:\\Users\\21428899\\OneDrive - Bellevue University\\Documents\\GitHub\\dsc520\\assignments\\assignment03\\assignment_03_Quintero_Vasquez_Johnatan.r")
-### knitr::stitch("C:\\Users\\21428899\\OneDrive - Bellevue University\\Documents\\GitHub\\dsc520\\assignments\\assignment03\\assignment_03_Quintero_Vasquez_Johnatan.R")
+
+### knitr::stitch("C:\\Users\\21428899\\OneDrive-Bellevue University\\Documents\\GitHub\\dsc520\\assignments\\assignment03\\assignment_03_Quintero_Vasquez_Johnatan.R")
+
