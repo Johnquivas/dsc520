@@ -1,0 +1,115 @@
+---
+title: "ASSIGNMENT 4"
+author: "Johnatan Quintero Vasquez"
+date: '2023-07-16'
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+bibliography: bibliography.bib
+---
+
+# Markdown Basics
+
+## Favorite Foods
+
+1.  Pizza
+2.  Ramen
+3.  Steak
+
+## Images
+
+![All Cases (Log Plot)](C:/Users/21428899/OneDrive-Bellevue University/Documents/GitHub/dsc520/completed/assignment04/plots/10-all-cases-log.png)
+
+## Add a Quote
+
+> Milagro es la magia y la fuerza al creer. Andres Gimenez.
+
+## Add an Equation
+
+$x=\frac{-b\pm \sqrt[2]{b^2-4ac}}{2a}$
+
+## Add a Footnote
+
+[^1]This is a footnote
+
+[^1]: This is a footnote.
+
+## Add Citations
+
+-   [@lander2014r]R for Everyone
+-   [@field2012discovering]Discovering Statistics Using R
+
+# Inline Code
+
+```{r}
+library(ggplot2)
+theme_set(theme_minimal())
+
+setwd("C:/Users/21428899/OneDrive-Bellevue University/Documents/GitHub/dsc520")
+
+heights_df <- read.csv("data/r4ds/heights.csv")
+
+covid_df <- read.csv("data/nytimes/covid-19-data/us-states.csv")
+
+california_df <- covid_df[ which( covid_df$state == "California"), ]
+ny_df <- covid_df[ which( covid_df$state == "New York"), ]
+florida_df <- covid_df[ which( covid_df$state == "Florida"), ]
+
+include=TRUE
+```
+
+## NY Times COVID-19 Data
+
+```{r echo=FALSE}
+ggplot(data=florida_df, aes(x=state, group=1)) +
+  geom_line(aes(y = cases, colour = "Florida")) +
+  geom_line(data=ny_df, aes(y = cases, colour = "New York")) +
+  geom_line(data=california_df, aes(y = cases, colour = "California")) +
+  scale_colour_manual("Reported Cases",
+                      breaks = c("Florida", "New York", "California"),
+                      values = c("Florida" = "darkred", "New York" = "darkgreen", "California" = "steelblue")) +
+  xlab(" ") + ylab("Cases") + scale_y_log10()
+```
+![All Cases (Log Plot)](C:/Users/21428899/OneDrive-Bellevue University/Documents/GitHub/dsc520/completed/assignment04/plots/10-all-cases-log.png)
+
+## R4DS Height vs Earnings
+
+```{r echo=FALSE}
+ggplot(heights_df, aes(x = height, y = earn, col=sex)) + geom_point() + 
+  ggtitle("Height vs. Earnings") +
+  xlab("Height (Inches)") +
+  ylab("Earnings (Dollars)")
+```
+
+# Tables
+
+## Knitr Table with Kable
+
+```{r echo=FALSE}
+name <- c("Aragon", "Bilbo", "Frodo", "Galadriel", "Sam", "Gandalf", "Legolas", "Sauron", "Gollum")
+race <- c("Men", "Hobbit", "Hobbit", "Elf", "Hobbit", "Maia", "Elf", "Maia", "Hobbit")
+in_fellowship <- c(TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE)
+ring_bearer <- c(FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE)
+age <- c(88, 129, 51, 7000, 36, 2019, 2931, 7052, 589)
+
+characters_df <- data.frame(name, race, in_fellowship, ring_bearer, age)
+
+knitr::kable(characters_df, caption='One Ring to Rule Them All')
+```
+
+## Pandoc Table
+
+| Name   | Race   | In Fellowship? | Is Ring Bearer? |  Age |
+|--------|--------|----------------|-----------------|-----:|
+| Aragon | Men    | Yes            | No              |   88 |
+| Bilbo  | Hobbit | No             | Yes             |  129 |
+| Frodo  | Hobbit | Yes            | Yes             |   51 |
+| Sam    | Hobbit | Yes            | Yes             |   36 |
+| Sauron | Maia   | No             | Yes             | 7052 |
+
+# References
+
+[PDF Quintero Vasquez Johnatan assignment04]("C:\Users\21428899\OneDrive-Bellevue University\Documents\GitHub\dsc520\assignments\assignment04\assignment_04_Quintero_Vasquez_Johnatan.pdf")
+
+[WORD Quintero Vasquez Johnatan assignment04]("C:\Users\21428899\OneDrive-Bellevue University\Documents\GitHub\dsc520\assignments\assignment04\assignment_04_Quintero_Vasquez_Johnatan.docx")
